@@ -6,7 +6,7 @@ export default function FooterBar() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 1.6, duration: 0.8 }}
-      className="pt-3 font-mono text-xs uppercase tracking-wider text-muted-foreground/60 sm:pt-0 md:translate-y-3 lg:translate-y-0"
+      className="mt-auto translate-y-4 pt-3 font-mono text-xs uppercase tracking-wider text-muted-foreground/60 sm:pt-0 md:mt-0 md:translate-y-3 lg:translate-y-0"
     >
       <span>
         <span className="relative top-[1px] text-sm">©</span>{' '}

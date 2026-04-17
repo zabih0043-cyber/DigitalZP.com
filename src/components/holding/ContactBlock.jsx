@@ -6,7 +6,7 @@ export default function ContactBlock() {
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className="mt-auto space-y-3 pt-3 sm:mt-0 sm:pt-0"
+      className="mt-auto translate-y-2 space-y-3 pt-3 sm:mt-0 sm:pt-0 md:translate-y-0"
     >
       <div className="flex flex-col gap-2">
         <a

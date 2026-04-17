@@ -50,7 +50,7 @@ export default function Home() {
             </div>
 
             <div className="flex-1 flex max-w-lg flex-col justify-start gap-6 pt-6 pb-6 sm:justify-center sm:gap-8 sm:pt-10 md:pb-8 lg:gap-10 lg:py-0">
-              <div className="space-y-6 md:-translate-y-3 lg:translate-y-0">
+              <div className="space-y-6 translate-y-3 md:-translate-y-3 lg:translate-y-0">
                 <HeroMessage />
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
