@@ -7,13 +7,13 @@ import HeroMessage from '../components/holding/HeroMessage';
 import StatusIndicator from '../components/holding/StatusIndicator';
 import VisualEngine from '../components/holding/VisualEngine';
 import { useIsMobile } from '../hooks/use-mobile';
-import mobileBackgroundImage from '../../assets/image.png';
+import mobileBackgroundImage from '../../assets/image for mobile background only.png';
 
 export default function Home() {
   const isMobile = useIsMobile();
 
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-background">
+    <div className="fixed inset-0 overflow-hidden bg-background overscroll-none">
       <div
         className="absolute inset-0 z-0 overflow-hidden md:hidden"
       >
@@ -24,9 +24,15 @@ export default function Home() {
           fetchPriority="high"
           loading="eager"
           decoding="async"
-          className="absolute right-[-22%] top-1/2 w-[70%] max-w-none -translate-y-1/2"
+          className="absolute right-[-30%] top-1/2 h-[92%] w-auto max-w-none -translate-y-1/2"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.52)_0%,rgba(2,6,23,0.72)_58%,rgba(2,6,23,0.92)_100%)]" />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(90deg, rgba(2, 6, 23, 0.94) 0%, rgba(2, 6, 23, 0.86) 28%, rgba(2, 6, 23, 0.46) 58%, rgba(2, 6, 23, 0.14) 100%), linear-gradient(180deg, rgba(2, 6, 23, 0.52) 0%, rgba(2, 6, 23, 0.72) 58%, rgba(2, 6, 23, 0.92) 100%)',
+          }}
+        />
       </div>
 
       <div

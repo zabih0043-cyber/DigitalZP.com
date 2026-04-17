@@ -2,19 +2,24 @@ import { useState, useEffect } from 'react';
 
 export default function CursorGlow() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [enabled, setEnabled] = useState(false);
+  const [mode, setMode] = useState('none');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const canUseGlow =
-      window.matchMedia('(pointer: fine)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const supportsCursorGlow = window.matchMedia('(pointer: fine)').matches;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    setEnabled(canUseGlow);
-
-    if (!canUseGlow) {
+    if (reducedMotion) {
+      setMode('none');
       return undefined;
     }
+
+    if (!supportsCursorGlow) {
+      setMode('ambient');
+      return undefined;
+    }
+
+    setMode('cursor');
 
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY });
@@ -33,7 +38,19 @@ export default function CursorGlow() {
     };
   }, [visible]);
 
-  if (!enabled || !visible) return null;
+  if (mode === 'ambient') {
+    return (
+      <div
+        className="pointer-events-none fixed right-[-30%] top-[18%] z-10 h-[320px] w-[320px] rounded-full mix-blend-screen md:hidden"
+        style={{
+          background: 'radial-gradient(circle, hsla(199, 89%, 60%, 0.16) 0%, hsla(199, 89%, 60%, 0.08) 34%, transparent 70%)',
+          filter: 'blur(22px)',
+        }}
+      />
+    );
+  }
+
+  if (mode !== 'cursor' || !visible) return null;
 
   return (
     <div
