@@ -2,9 +2,20 @@ import { useState, useEffect } from 'react';
 
 export default function CursorGlow() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const [enabled, setEnabled] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const canUseGlow =
+      window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    setEnabled(canUseGlow);
+
+    if (!canUseGlow) {
+      return undefined;
+    }
+
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY });
       if (!visible) setVisible(true);
@@ -22,7 +33,7 @@ export default function CursorGlow() {
     };
   }, [visible]);
 
-  if (!visible) return null;
+  if (!enabled || !visible) return null;
 
   return (
     <div

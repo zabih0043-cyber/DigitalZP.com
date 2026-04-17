@@ -6,20 +6,28 @@ import FooterBar from '../components/holding/FooterBar';
 import HeroMessage from '../components/holding/HeroMessage';
 import StatusIndicator from '../components/holding/StatusIndicator';
 import VisualEngine from '../components/holding/VisualEngine';
-import mobileBackgroundImage from '../../assets/image for mobile background only.png';
+import { useIsMobile } from '../hooks/use-mobile';
+import mobileBackgroundImage from '../../assets/image.png';
 
 export default function Home() {
+  const isMobile = useIsMobile();
+
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-background">
       <div
-        className="absolute inset-0 z-0 md:hidden"
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(2, 6, 23, 0.52) 0%, rgba(2, 6, 23, 0.72) 58%, rgba(2, 6, 23, 0.92) 100%), url(${mobileBackgroundImage})`,
-          backgroundPosition: '120% center',
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: '70% auto',
-        }}
-      />
+        className="absolute inset-0 z-0 overflow-hidden md:hidden"
+      >
+        <img
+          src={mobileBackgroundImage}
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+          className="absolute right-[-22%] top-1/2 w-[70%] max-w-none -translate-y-1/2"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.52)_0%,rgba(2,6,23,0.72)_58%,rgba(2,6,23,0.92)_100%)]" />
+      </div>
 
       <div
         className="absolute inset-0 z-0 opacity-[0.03]"
@@ -72,9 +80,11 @@ export default function Home() {
             <FooterBar />
           </div>
 
-          <div className="relative z-0 hidden md:block md:w-[40%]">
-            <VisualEngine />
-          </div>
+          {!isMobile && (
+            <div className="relative z-0 hidden md:block md:w-[40%]">
+              <VisualEngine />
+            </div>
+          )}
         </div>
       </div>
     </div>
