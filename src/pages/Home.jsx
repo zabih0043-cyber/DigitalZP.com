@@ -1,0 +1,82 @@
+import { motion } from 'framer-motion';
+import BorderDraw from '../components/holding/BorderDraw';
+import ContactBlock from '../components/holding/ContactBlock';
+import CursorGlow from '../components/holding/CursorGlow';
+import FooterBar from '../components/holding/FooterBar';
+import HeroMessage from '../components/holding/HeroMessage';
+import StatusIndicator from '../components/holding/StatusIndicator';
+import VisualEngine from '../components/holding/VisualEngine';
+import mobileBackgroundImage from '../../assets/image for mobile background only.png';
+
+export default function Home() {
+  return (
+    <div className="relative h-screen w-screen overflow-hidden bg-background">
+      <div
+        className="absolute inset-0 z-0 md:hidden"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(2, 6, 23, 0.52) 0%, rgba(2, 6, 23, 0.72) 58%, rgba(2, 6, 23, 0.92) 100%), url(${mobileBackgroundImage})`,
+          backgroundPosition: '120% center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: '70% auto',
+        }}
+      />
+
+      <div
+        className="absolute inset-0 z-0 opacity-[0.03]"
+        style={{
+          backgroundImage: 'radial-gradient(circle, hsl(var(--muted-foreground)) 1px, transparent 1px)',
+          backgroundSize: '24px 24px',
+        }}
+      />
+
+      <CursorGlow />
+      <BorderDraw />
+
+      <div className="relative h-full flex flex-col">
+        <div className="flex-1 flex flex-col md:flex-row">
+          <div className="relative z-20 flex flex-col justify-between px-6 py-8 sm:px-10 md:w-[60%] md:px-12 md:py-10 lg:px-14 lg:py-12">
+            <div className="space-y-4 sm:space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: -8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4, duration: 0.6 }}
+              >
+                <span className="font-sora text-[1.55rem] font-semibold tracking-tight sm:text-[1.7rem]">
+                  <span className="text-white/95">Digital</span>
+                  <span className="text-[#6FE7FF] [text-shadow:0_0_16px_rgba(111,231,255,0.24)]">ZP</span>
+                </span>
+              </motion.div>
+              <StatusIndicator />
+            </div>
+
+            <div className="flex-1 flex max-w-lg flex-col justify-start gap-6 pt-6 pb-6 sm:justify-center sm:gap-8 sm:pt-10 md:pb-8 lg:gap-10 lg:py-0">
+              <div className="space-y-6 md:-translate-y-3 lg:translate-y-0">
+                <HeroMessage />
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="space-y-1.5 sm:space-y-2"
+                >
+                  <span className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                    Our services:
+                  </span>
+                  <p className="font-mono text-sm text-[#6FE7FF] [text-shadow:0_0_16px_rgba(111,231,255,0.24)]">
+                    Websites | Apps | AI Assistants
+                  </p>
+                </motion.div>
+              </div>
+              <ContactBlock />
+            </div>
+
+            <FooterBar />
+          </div>
+
+          <div className="relative z-0 hidden md:block md:w-[40%]">
+            <VisualEngine />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
