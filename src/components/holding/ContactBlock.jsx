@@ -10,12 +10,12 @@ export default function ContactBlock() {
     >
       <div className="flex flex-col gap-2">
         <a
-          href="mailto:projects@digitalZP.com"
+          href="mailto:projects@digitalzp.com"
           className="group inline-flex w-fit self-start items-center gap-3 rounded-sm font-mono text-sm text-white/86 transition-[color,opacity] duration-[480ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-[#A6E7FF] hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
         >
           <span className="text-xs tracking-[0.08em] text-white/34 transition-[color,opacity] duration-[480ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-[#7FD7F6] group-hover:opacity-100">[E]</span>
           <span className="relative opacity-95 transition-[color,opacity,text-shadow] duration-[480ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:[text-shadow:0_0_12px_rgba(127,215,246,0.10)]">
-            projects@digitalZP.com
+            projects@digitalzp.com
           </span>
         </a>
         <a
@@ -30,7 +30,7 @@ export default function ContactBlock() {
       </div>
 
       <motion.a
-        href="mailto:web@digitalZP.com"
+        href="mailto:projects@digitalzp.com"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
